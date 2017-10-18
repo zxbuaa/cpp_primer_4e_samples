@@ -1,2 +1,4 @@
 *.exe
 *.o
+cscope.*
+compile_commands.json
