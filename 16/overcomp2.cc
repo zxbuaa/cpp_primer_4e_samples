@@ -33,6 +33,7 @@ using std:: vector;
 using std::cout; using std::endl;
 #include <string>
 using std::string;
+#include <cstring>
 
 // implement strcmp-like generic compare function 
 // returns 0 if the values are equal, 1 if v1 is larger, -1 if v1 is smaller

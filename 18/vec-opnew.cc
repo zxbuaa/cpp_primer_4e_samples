@@ -59,7 +59,7 @@ void Vector<T>::reallocate()
 {
     // compute size of current array and allocate space for twice as many elements
     std::ptrdiff_t size = first_free - elements; 
-    std::ptrdiff_t newcapacity = 2 * max(size, 1);
+    std::ptrdiff_t newcapacity = 2 * max(size, static_cast<std::ptrdiff_t>(1));
     T* newelements = alloc.allocate(newcapacity);
  
     // construct copies of the existing elements in the new space

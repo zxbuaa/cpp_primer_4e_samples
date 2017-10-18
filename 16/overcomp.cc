@@ -33,6 +33,7 @@ using std:: vector;
 using std::cout; using std::endl;
 #include <string>
 using std::string;
+#include <cstring>
 
 // implement strcmp-like generic compare function 
 template <typename T> int compare2(T, T);

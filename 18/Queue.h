@@ -48,7 +48,7 @@ public:
 
     // construct a Queue from a pair of iterators on some sequence
     template <class It> Queue(It, It): head(0), tail(0)
-                             { copy(beg, end); }
+                             { copy(head, tail); }
 
     // copy control to manage pointers to QueueItems in the Queue
     Queue(const Queue &Q): head(0), tail(0) {copy(Q);}
