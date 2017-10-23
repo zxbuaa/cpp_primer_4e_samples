@@ -59,6 +59,7 @@ public:
         { return isbn == rhs.isbn; }
     // default constructor needed to initialize members of built-in type
     Sales_item(): units_sold(0), revenue(0.0) { }
+    std::string get_isbn() {return isbn;}
 // private members as before
 private:
     std::string isbn;

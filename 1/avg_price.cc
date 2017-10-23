@@ -28,6 +28,8 @@
 */ 
 
 #include <iostream>
+#include <list>
+#include <map>
 #include "Sales_item.h"
 
 int main() 
@@ -35,25 +37,25 @@ int main()
     // declare variables to hold running sum and data for the next record 
     Sales_item total, trans;
 
-    // is there data to process?
-    if (std::cin >> total) {
-        // if so, read the transaction records 
-        while (std::cin >> trans)
-            if (total.same_isbn(trans)) 
-                // match: update the running total 
-                total = total + trans;
-            else {   
-                // no match: print & assign to total
-                std::cout << total << std::endl;
-                total = trans;
-            }
-        // remember to print last record
-        std::cout << total << std::endl; 
-    } else {
-        // no input!, warn the user
-        std::cout << "No data?!" << std::endl;
-        return -1;  // indicate failure
+    // use a map to store sales items with same isbn in a group
+    std::map<std::string, std::list<Sales_item> > db;
+    while (std::cin >> trans) {
+        std::string k = trans.get_isbn();
+        db[k].push_back(trans);
     }
+
+    // traverse the map
+    for (std::map<std::string, std::list<Sales_item> >::const_iterator it = db.begin();
+            it != db.end(); it++) {
+        Sales_item total(it->first);
+        std::list<Sales_item> sales_items = it->second;
+        for (std::list<Sales_item>::const_iterator i = sales_items.begin();
+                i != sales_items.end(); i++) {
+            total += *i;
+        }
+        std::cout << total << std::endl;
+    }
+
 
     return 0;
 }
